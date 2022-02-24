@@ -12,64 +12,25 @@
 
 #include <unistd.h>
 
-int	puissance10(int n)
+void	ft_putnbr(int nbr)
 {
-	int	i;
-	int	d;
+	long int	nbr2;
+	int			i;
+	int			res;
 
 	i = 0;
-	d = 1;
-	while (i < n)
-	{
-		d *= 10;
-		i++;
-	}
-	return (d);
-}
-
-int	size(int nb, int n)
-{
-	if (nb < 0)
-		nb = -nb;
-	while (nb / 10 >= 1)
-	{
-		n++;
-		nb = nb / 10;
-	}
-	return (n);
-}
-
-void	print(int nb, int n)
-{
-	int	a;
-	int	i;
-
-	i = 0;
-	while (i <= n)
-	{
-		a = (nb / puissance10(n - i)) + 48;
-		write(1, &a, 1);
-		nb = nb % puissance10(n - i);
-		i++;
-	}
-}
-
-void	ft_putnbr(int nb)
-{
-	int	n;
-
-	n = 0;
-	n = size(nb, n);
-	if (nb == -2147483648)
-	{
-		write(1, "-2147483648", 11);
-	}
-	else if (nb < 0)
+	res = 0;
+	if (nbr < 0)
 	{
 		write(1, "-", 1);
-		nb = -nb;
-		print(nb, n);
+		nbr2 = nbr;
+		nbr2 = -nbr2;
+		i++;
 	}
 	else
-		print(nb, n);
+		nbr2 = nbr;
+	if (nbr2 >= 10)
+		ft_putnbr(nbr2 / 10);
+	res = nbr2 % 10 + 48;
+	write(1, &res, 1);
 }
