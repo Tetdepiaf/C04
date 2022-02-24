@@ -12,17 +12,11 @@
 
 #include <unistd.h>
 
-int	convert(int nb, char c)
-{
-	nb = 10 * nb + c - 48;
-	return (nb);
-}
-
 int	ft_atoi(char *str)
 {
-	int	i;
-	int	neg;
-	int	res;
+	int		i;
+	int		neg;
+	char	res;
 
 	i = 0;
 	res = 0;
@@ -38,7 +32,7 @@ int	ft_atoi(char *str)
 	}
 	while (str[i] && (str[i] > 47 && str[i] < 58))
 	{
-		res = convert(res, str[i]);
+		res = 10 * res + str[i] - 48;
 		i++;
 	}
 	return (res * neg);
